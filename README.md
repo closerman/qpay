@@ -23,6 +23,8 @@
 
 ```
 
+环境要求：　linux , php5.6.4+, lumen5.4+
+
 $ composer install
 $ 设置 `storage` 目录必须让服务器有写入权限。
 在storage/app/下创建cache目录
@@ -40,8 +42,19 @@ $ vim .env
     QPAY_PASSWORD
        支付通密码
 
+导入数据库
 $ php artisan migrate
-$php artisan create:user (创建管理员)
+创建管理员
+$ php artisan create:user
+采集数据
+$ php artisan collect:agent  ( 这里可以用linux 下的contab来做定时采集 )     
+
+
+路由文件在　routes/api/vi.php文件中
+控制器在　app/Http/Controllers/Api/V1/目录下
+
+采集控制台在　app/console/Commands/CollectAgent.php 文件中
+
 
 头信息中可以增加 Accept:application/vnd.lumen.v1+json 切换v1和v2版本
 
